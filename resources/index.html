@@ -41,6 +41,10 @@
                 dy = -dy;
             }
 
+            if (x + dx < 0 || x + dx > canvas.width) {
+                dx = -dx;
+            }
+
             x += dx;
             y += dy;
         }
