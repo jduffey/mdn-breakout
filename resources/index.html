@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <canvas id="myCanvas" width="480" height="320"></canvas>
+    <canvas id="myCanvas" width="500" height="320"></canvas>
 
     <script>
         var canvas = document.getElementById("myCanvas");
@@ -36,7 +36,7 @@
         var leftPressed = false;
         var brickRowCount = 5;
         var brickColumnCount = 3;
-        var brickWidth = 75;
+        var brickWidth = 80;
         var brickHeight = 20;
         var brickPadding = 10;
         var brickOffsetTop = 30;
@@ -197,7 +197,6 @@
                         y = canvas.height - 30;
                         dx = 3;
                         dy = -3;
-                        //paddleX = (canvas.width - paddleWidth) / 2;
                     }
                 }
             }
