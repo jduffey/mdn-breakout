@@ -43,7 +43,11 @@
         var brickOffsetLeft = 30;
         var score = 0;
         var lives = 3;
-        var ballColor = "#FF0011";
+        var backgroundColor = "#CCCCCC";
+        var ballColor = "#FAED27";
+        var paddleColor = "#0095DD";
+        var bricksColor = "#0095DD";
+        var textColor = "#0095DD";
 
         var bricks = [];
         for (var c = 0; c < brickColumnCount; c++) {
@@ -110,7 +114,7 @@
         function drawPaddle() {
             ctx.beginPath();
             ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-            ctx.fillStyle = "#0095DD";
+            ctx.fillStyle = paddleColor;
             ctx.fill();
             ctx.closePath();
         }
@@ -125,7 +129,7 @@
                         bricks[c][r].y = brickY;
                         ctx.beginPath();
                         ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.fillStyle = "#0095DD";
+                        ctx.fillStyle = bricksColor;
                         ctx.fill();
                         ctx.closePath();
                     }
@@ -135,20 +139,20 @@
 
         function drawScore() {
             ctx.font = "16px Arial";
-            ctx.fillStyle = "#0095DD";
+            ctx.fillStyle = textColor;
             ctx.fillText("Score: " + score, 8, 20);
         }
 
         function drawLives() {
             ctx.font = "16x Arial";
-            ctx.fillStyle = "#0095DD";
+            ctx.fillStyle = textColor;
             ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
         }
 
         function drawBackground() {
             ctx.beginPath();
             ctx.rect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#222222";
+            ctx.fillStyle = backgroundColor;
             ctx.fill();
             ctx.closePath();
         }
@@ -158,7 +162,7 @@
             drawBackground();
             drawBricks();
             drawBall();
-            drawPaddle();            
+            drawPaddle();
             drawScore();
             drawLives();
             collisionDetection();
@@ -178,6 +182,13 @@
                         alert("GAME OVER");
                         document.location.reload();
                     } else {
+                        if (lives == 1) {
+                            backgroundColor = "#333333";
+                            ballColor = "#FF0011";
+                            paddleColor = "#FF0011";
+                            bricksColor = "#FF0011";
+                            textColor = "#FF0011";
+                        }
                         x = canvas.width / 2;
                         y = canvas.height - 30;
                         dx = 3;
