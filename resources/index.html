@@ -19,11 +19,13 @@
 </head>
 
 <body>
-    <canvas id="myCanvas" width="480" height="320"></canvas>
+    <canvas id="myCanvas" width="600" height="400"></canvas>
 
     <script>
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
+        //ctx.fillStyle = "#222222";
+        //ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
 
         var x = canvas.width / 2;
         var y = canvas.height - 30;
@@ -60,6 +62,14 @@
 
         document.addEventListener("keydown", keyDownHandler, false);
         document.addEventListener("keyup", keyUpHandler, false);
+        document.addEventListener("mousemove",mouseMoveHandler, false);
+
+        function mouseMoveHandler(e){
+            var relativeX = e.clientX - canvas.offsetLeft;
+            if(relativeX>0&&relativeX<canvas.width){
+                paddleX = relativeX-paddleWidth/2;
+            }
+        }
 
         function keyDownHandler(e) {
             if (e.keyCode == 39) {
@@ -129,7 +139,7 @@
             } else if (y + dy > canvas.height - ballRadius) {
                 if (x > paddleX && x < paddleX + paddleWidth) {
                     dy = -dy;
-                } else {
+                } else {                    
                     alert("GAME OVER");
                     document.location.reload();
                 }
