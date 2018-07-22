@@ -11,7 +11,7 @@
         }
 
         canvas {
-            background: #eee;
+            background: #FFF;
             display: block;
             margin: 0 auto;
         }
@@ -43,6 +43,7 @@
         var brickOffsetLeft = 30;
         var score = 0;
         var lives = 3;
+        var ballColor = "#FF0011";
 
         var bricks = [];
         for (var c = 0; c < brickColumnCount; c++) {
@@ -101,7 +102,7 @@
         function drawBall() {
             ctx.beginPath();
             ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-            ctx.fillStyle = "#0095DD";
+            ctx.fillStyle = ballColor;
             ctx.fill();
             ctx.closePath();
         }
@@ -144,8 +145,17 @@
             ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
         }
 
+        function drawBackground() {
+            ctx.beginPath();
+            ctx.rect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#222222";
+            ctx.fill();
+            ctx.closePath();
+        }
+
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBackground();
             drawBricks();
             drawBall();
             drawPaddle();            
