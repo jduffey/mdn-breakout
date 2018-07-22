@@ -93,6 +93,7 @@
                             dy = -dy;
                             b.status = 0;
                             score++;
+                            paddleWidth = paddleWidth - 2;
                             if (score == brickRowCount * brickColumnCount) {
                                 alert("YOU WIN");
                                 document.location.reload();
