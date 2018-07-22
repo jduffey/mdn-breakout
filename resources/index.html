@@ -157,6 +157,14 @@
             ctx.closePath();
         }
 
+        function applyLastLifeColorScheme() {
+            backgroundColor = "#333333";
+            ballColor = "#FF0011";
+            paddleColor = "#FF0011";
+            bricksColor = "#FF0011";
+            textColor = "#FF0011";
+        }
+
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawBackground();
@@ -183,11 +191,7 @@
                         document.location.reload();
                     } else {
                         if (lives == 1) {
-                            backgroundColor = "#333333";
-                            ballColor = "#FF0011";
-                            paddleColor = "#FF0011";
-                            bricksColor = "#FF0011";
-                            textColor = "#FF0011";
+                            applyLastLifeColorScheme();
                         }
                         x = canvas.width / 2;
                         y = canvas.height - 30;
